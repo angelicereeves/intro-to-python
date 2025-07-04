@@ -1,40 +1,49 @@
-#Assignment for intro to python module
-#Codewars solutions
 
-#Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
 
-def even_or_odd(number):
-    if number % 2 == 0:
-        return "Even"
-    else:
-        return "Odd"
+#Create a function that takes a list of numbers as an argument, squares each number, and returns a new list with the squared values.
+list_of_numbers = [3, 99, 12, 1, 7]
+def square_numbers(numbers):
+    squared_numbers = []
+    for number in numbers:
+        squared_numbers.append(number ** 2)
+    return squared_numbers
+
+print (square_numbers(list_of_numbers))
+
+
+userx = input("Enter a number: ")
+usery = input("Enter another number: ")
+
+userx = int(userx)
+usery = int(usery)
+
+def divide_numbers(x, y):
+    try:
+        result = x / y
+        return result
+    except ValueError:
+        return "Error: Please enter valid numbers."
+    except ZeroDivisionError:
+        return "Error: Division by zero is not allowed."
     
-
-#We need a function that can transform a number (integer) into a string.
-
-def number_to_string(num):
-    return str(num)
-
-def number_to_string(num):
-    return f"{num}"
-
-def number_to_string(num):
-    return "" + str(num)
-
-def number_to_string(num):
-    return "{}".format(num)
+print(divide_numbers(userx, usery))
 
 
-#Write a function that removes the spaces from the string, then return the resultant string.
 
-def no_space(text):
-    return text.replace(" ", "")
 
-#Return the number (count) of vowels in the given string.We will consider a, e, i, o, u as vowels for this Kata (but not y).The input string will only consist of lower case letters and/or spaces.
+account_balance = 1000
 
-def get_count(sentence):
-    count = 0
-    for i in sentence:
-        if i in "aeiou":
-            count += 1
-    return count
+def withdraw(amount):
+    try:
+        amount = int(amount)
+    except ValueError:
+        return "Error: Please enter a valid number for the withdrawal amount." 
+    global account_balance
+    if amount <= account_balance:
+        account_balance -= amount
+        return f"Withdrawal successful! New balance: {account_balance}"
+    else:
+        return "Error: Insufficient funds."
+    
+print(withdraw(1500))
+print(withdraw(600))  # This should trigger an error due to insufficient funds
